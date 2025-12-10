@@ -119,7 +119,7 @@ export default function ProveedorScreens({ navigation }) {
 
            <TouchableOpacity
                 style={{ padding: 10, marginLeft: 10 }}
-                onPress={() => navigation.navigate("ProveedorForm", { cliente: item })}
+                onPress={() => navigation.navigate("ProveedorForm", { proveedor: item })}
             >
                 <Ionicons name="create-outline" size={24} color="#132692" />
             </TouchableOpacity>
