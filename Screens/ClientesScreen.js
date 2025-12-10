@@ -1,1 +1,1 @@
-//Archivo de clientes Screen.js
+//Archivo de clientesScreen.js
