@@ -30,7 +30,7 @@ export default function ProveedorScreens({ navigation }) {
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
 
-  const API_URL = "http://localhost:5059/api/proveedores";
+  const API_URL = "http://10.33.125.19:5059/api/proveedores";
 
   const fetchProveedores = async () => {
     try {

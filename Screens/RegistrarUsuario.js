@@ -138,8 +138,7 @@ export default function RegistrarUsuario({ navigation }) {
       </View>
 
       <TouchableOpacity style={styles.saveButton} onPress={registrar}>
-        <Ionicons name="save-outline" size={22} color="#fff" />
-        <Text style={styles.saveText}>Registrar</Text>
+        <Text style={styles.saveText}>Guardar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -198,7 +197,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   selectedCC: { backgroundColor: "#004AAD" },
-  selectedCE: { backgroundColor: "#17a2b8" },
+  selectedCE: { backgroundColor: "#56ce3eff" },
   selectedAdmin: { backgroundColor: "#72cb10" },
   selectedVendor: { backgroundColor: "#108ec0ff" },
   saveButton: {
@@ -212,8 +211,8 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   saveText: {
-    color: "#fff",
-    fontWeight: "bold",
+    color: "#132692",
+    fontFamily: "GeomBold",
     fontSize: 16,
   },
 });

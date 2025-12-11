@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "#132692ff",
     fontSize: 30,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     flex: 1,
     textAlign: "center",
   },

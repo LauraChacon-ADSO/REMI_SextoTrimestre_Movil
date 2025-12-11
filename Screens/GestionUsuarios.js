@@ -146,13 +146,13 @@ export default function GestionUsuarios({ navigation, route }) {
     <View style={styles.container}>
       {/* Header verde */}
       <View style={styles.headerBox}>
-        <TouchableOpacity onPress={() => navigation.navigate("AdminHome")}>
-          <Ionicons name="arrow-back-outline" size={30} color="#fff" />
+        <TouchableOpacity >
+          <Ionicons name="people-outline" size={30} color="#fff" />
         </TouchableOpacity>
 
         <Text style={styles.headerText}>Gestión de Usuarios</Text>
 
-        <Ionicons name="cart-outline" size={30} color="#fff" />
+        <Ionicons name="people-outline" size={30} color="#fff" />
       </View>
 
       {/* Barra para buscador */}
@@ -210,7 +210,7 @@ GestionUsuarios.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 30, backgroundColor: "#f0f4f8" },
+  container: { flex: 1, padding: 30, backgroundColor: "#fff" },
   headerBox: {
     backgroundColor: "#72cb10",
     paddingVertical: 40,
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: "#f0f4f8",
     padding: 18,
     borderRadius: 12,
     elevation: 6,

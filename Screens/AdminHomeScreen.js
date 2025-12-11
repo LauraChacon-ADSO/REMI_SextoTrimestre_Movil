@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   headerText: {
-    color: "#132692ff",
+    color: "#0303B5",
     fontSize: 25,
     fontFamily: "GeomBold",
     textAlign: "center",
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
 
   titulo: {
-    color: "#132692ff",
+    color: "#0303B5",
     fontSize: 25,
     fontFamily: "Geom",
   },

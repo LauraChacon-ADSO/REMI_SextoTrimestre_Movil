@@ -30,7 +30,7 @@ export default function ClientesScreens({ navigation }) {
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
 
-  const API_URL = "http://localhost:5059/api/clientes";
+  const API_URL = "http://10.33.125.19:5059/api/clientes";
 
   const fetchClientes = async () => {
     try {
@@ -64,7 +64,7 @@ export default function ClientesScreens({ navigation }) {
     if (!window.confirm("¿Seguro que deseas eliminar este cliente?")) return;
 
     try {
-        await axios.delete(`http://localhost:5059/api/clientes/${documentoLimpio}`);
+        await axios.delete(`http://10.33.125.19:5059/api/clientes/${documentoLimpio}`);
         alert("Cliente eliminado correctamente");
         fetchClientes();
     } catch (error) {
@@ -93,12 +93,12 @@ export default function ClientesScreens({ navigation }) {
         <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
       </View>
     );
-  }
+  };
 
   if (loading) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator size="large" color="#4ead00" />
+        <ActivityIndicator size="large" color="#72CB10" />
         <Text>Cargando clientes...</Text>
       </View>
     );
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   },
   clearButtonText: {
      color: "#132692ff",
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     fontSize: 16,
   },
 

@@ -30,7 +30,7 @@ export default function ProductoScreens({ navigation }) {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
- const API_URL = "http://localhost:5059/api/productos";
+ const API_URL = "http://10.33.125.19:5059/api/productos";
 
   const fetchProductos = async () => {
     try {
@@ -102,13 +102,13 @@ export default function ProductoScreens({ navigation }) {
    
     <View style={styles.header}>
       <TouchableOpacity style={styles.iconButton}>
-        <Ionicons name="cart-outline" size={35} color="#fff" />
+        <Ionicons name="cube-outline" size={35} color="#fff" />
       </TouchableOpacity>
 
       <Text style={styles.headerTitle}>Productos</Text>
 
       <TouchableOpacity style={styles.iconButton}>
-        <Ionicons name="cart-outline" size={35} color="#fff" />
+        <Ionicons name="cube-outline" size={35} color="#fff" />
       </TouchableOpacity>
     </View>
 
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
 
   name: { 
     fontSize: 25, 
-    fontWeight: "800", 
+    fontFamily: "GeomBold", 
     color: "#132692ff", 
     width: "100%",   
   },
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "#132692ff",
+    color: "#0303B5",
     fontSize: 30,
     fontFamily: "GeomBold",
     textAlign: "center",
@@ -265,8 +265,8 @@ const styles = StyleSheet.create({
   },
 
   searchButtonText: {
-    color: "#132692ff",
-    fontWeight: "bold",
+    color: "#0303B5",
+    fontFamily: "GeomBold",
     fontSize: 16,
   },
 });

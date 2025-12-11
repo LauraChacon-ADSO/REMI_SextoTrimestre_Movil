@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 28,
     fontFamily: "GeomBold",
-    color: "#132692",
+    color: "#0303B5",
   },
 
   label: {
@@ -228,8 +228,8 @@ const styles = StyleSheet.create({
   },
 
   btnText: {
-    color: "#132692",
+    color: "#0303B5",
     fontSize: 18,
-    fontWeight: "600",
+    fontFamily: "GeomBold",
   },
 });

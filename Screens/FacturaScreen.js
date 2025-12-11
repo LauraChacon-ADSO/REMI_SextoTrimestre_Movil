@@ -30,7 +30,7 @@ export default function FacturaScreen({ navigation }) {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
-  const API_URL = "http://localhost:5059/api/PedidosInfo"; 
+  const API_URL = "http://10.33.125.19:5059/api/PedidosInfo"; 
 
   const fetchFacturas = async () => {
     try {
@@ -68,7 +68,7 @@ export default function FacturaScreen({ navigation }) {
   if (loading) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator size="large" color="#4ead00ff" />
+        <ActivityIndicator size="large" color="#72CB10" />
         <Text style={{ marginTop: 10 }}>Cargando facturas...</Text>
       </View>
     );
@@ -95,8 +95,8 @@ export default function FacturaScreen({ navigation }) {
     <View style={styles.container}>
       
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-            <Ionicons name="arrow-back" size={28} color="#fff" />
+        <TouchableOpacity style={styles.iconButton}>
+          <Ionicons name="receipt-outline" size={35} color="#fff" />
         </TouchableOpacity>
 
         <Text style={styles.headerTitle}>Facturas</Text>
@@ -108,7 +108,7 @@ export default function FacturaScreen({ navigation }) {
 
       <View style={styles.searchRow}>
         <View style={styles.searchBox}>
-          <Ionicons name="search" size={20} color="#2d7211" style={{ marginRight: 6 }} />
+          <Ionicons name="search" size={20} color="#72CB10" style={{ marginRight: 6 }} />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar factura por documento"

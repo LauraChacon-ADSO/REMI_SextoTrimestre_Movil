@@ -30,7 +30,7 @@ export default function ProveedorFormScreens({ navigation, route }) {
   const [correoProveedor, setCorreo] = useState("");
   const [telefonoProveedor, setTelefono] = useState("");
 
-  const API_URL = "http://10.0.2.2:5073/api/proveedores";
+  const API_URL = "http://10.33.125.19:5059/api/proveedores";
 
   useEffect(() => {
     if (proveedorEditar) {
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 28,
     fontFamily: "GeomBold",
-    color: "#132692",
+    color: "#0303B5",
   },
 
   label: {
@@ -203,8 +203,8 @@ const styles = StyleSheet.create({
   },
 
   btnText: {
-    color: "#132692",
+    color: "#0303B5",
     fontSize: 18,
-    fontWeight: "600",
+    fontFamily: "GeomBold",
   },
 });

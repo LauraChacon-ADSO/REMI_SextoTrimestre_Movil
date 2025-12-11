@@ -90,7 +90,7 @@ export default function VendedorHomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   header: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72CB10",
     paddingVertical: 40,
     paddingHorizontal: 10,
     flexDirection: "row",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   headerText: {
-    color: "#132692ff",
+    color: "#0303B5",
     fontSize: 30,
     fontFamily: "GeomBold",
     textAlign: "center",
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   titulo: {
-    color: "#132692ff",
+    color: "#0303B5",
     fontSize: 25,
     fontFamily: "Geom",
   },
