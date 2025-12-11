@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 15, backgroundColor: "#fff" },
 
   header: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72CB10",
     paddingVertical: 25,
     paddingHorizontal: 15,
     flexDirection: "row",
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderColor: "#2d7211",
+    borderColor: "#72CB10",
     borderWidth: 1.5,
     flex: 1,
     paddingHorizontal: 10,
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   },
   clearButton: {
     marginLeft: 10,
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72CB10",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 10,
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
 
 
   addButton: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72CB10",
     position: "absolute",
     bottom: 20,
     right: 20,
