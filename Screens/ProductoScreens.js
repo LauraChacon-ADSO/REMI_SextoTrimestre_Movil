@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
 
   
   header: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72cb10",
     paddingVertical: 30,
     paddingHorizontal: 10,
     flexDirection: "row",
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#ffffffff",
     borderWidth: 1,
-    borderColor: "#32bb26ff",
+    borderColor: "#72cb10",
     borderRadius: 10,
     paddingHorizontal: 10,
     flex: 1,     
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   },
 
   searchButton: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72cb10",
     paddingVertical: 12,
     paddingHorizontal: 18,
     borderRadius: 10,

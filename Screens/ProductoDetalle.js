@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72cb10",
     paddingVertical: 30,
     paddingHorizontal: 10,
     flexDirection: "row",

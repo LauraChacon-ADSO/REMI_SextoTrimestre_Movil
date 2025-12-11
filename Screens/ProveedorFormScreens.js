@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   container: { padding: 20, backgroundColor: "#fff", flexGrow: 1 },
 
   header: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72cb10",
     paddingVertical: 30,
     paddingHorizontal: 15,
     flexDirection: "row",
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   },
 
   btnGuardar: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72cb10",
     padding: 15,
     borderRadius: 12,
     marginTop: 20,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   },
 
   btnVolver: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72cb10",
     padding: 15,
     borderRadius: 12,
     marginTop: 15,
