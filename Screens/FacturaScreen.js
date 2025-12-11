@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   name: { fontSize: 22, fontWeight: "800", color: "#132692ff", width: "100%" },
 
   header: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72CB10",
     paddingVertical: 30,
     paddingHorizontal: 10,
     flexDirection: "row",
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderWidth: 1,
-    borderColor: "#32bb26ff",
+    borderColor: "#72CB10",
     borderRadius: 10,
     paddingHorizontal: 10,
     flex: 1,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   searchInput: { flex: 1, fontSize: 16 },
 
   searchButton: {
-    backgroundColor: "#4ead00",
+    backgroundColor: "#72CB10",
     paddingVertical: 12,
     paddingHorizontal: 18,
     borderRadius: 10,
