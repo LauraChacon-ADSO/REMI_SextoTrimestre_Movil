@@ -17,6 +17,7 @@ export default function VendedorHomeScreen({ navigation }) {
   };
 
   const items = [
+    { title: "Proveedores", icon: "business-outline", route: "Proveedores" },
     { title: "Productos", icon: "cube-outline", route: "Productos" },
     { title: "Clientes", icon: "cash-outline", route: "Clientes" },
     { title: "Facturas", icon: "receipt-outline", route: "Factura" },
