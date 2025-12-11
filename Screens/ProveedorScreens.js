@@ -13,14 +13,24 @@ import {
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
 export default function ProveedorScreens({ navigation }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const [proveedores, setProveedores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
 
-  const API_URL = "http://10.0.2.2:5073/api/proveedores";
+  const API_URL = "http://localhost:5059/api/proveedores";
 
   const fetchProveedores = async () => {
     try {
@@ -62,6 +72,15 @@ export default function ProveedorScreens({ navigation }) {
   const filtered = proveedores.filter((item) =>
     item.nombreProveedor?.toLowerCase().includes(search.toLowerCase())
   );
+
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
+  }
 
   if (loading) {
     return (
@@ -166,7 +185,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "#132692",
     fontSize: 28,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     flex: 1,
     textAlign: "center",
   },

@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  TextInput,
+  ActivityIndicator,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import api from "../utils/api";
 import PropTypes from "prop-types";
+import { useFonts } from "expo-font";
 
 export default function GestionUsuarios({ navigation, route }) {
+  const [loaded] = useFonts({
+      Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+      MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+      Geom: require("../assets/fonts/Geom-Regular.ttf"),
+      GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+      Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+      MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+    });
+
   const [usuarios, setUsuarios] = useState([]);
+  const [search, setSearch] = useState(""); // estado para buscar
 
   const cargarUsuarios = async () => {
     try {
@@ -25,8 +45,8 @@ export default function GestionUsuarios({ navigation, route }) {
   useEffect(() => {
     if (route.params?.updatedUser) {
       const updatedUser = route.params.updatedUser;
-      setUsuarios(prev =>
-        prev.map(u =>
+      setUsuarios((prev) =>
+        prev.map((u) =>
           u.documentoUsuario === updatedUser.documentoUsuario ? updatedUser : u
         )
       );
@@ -51,10 +71,30 @@ export default function GestionUsuarios({ navigation, route }) {
       `¿Deseas eliminar a ${usuario.nombreUsuario} ${usuario.apellidoUsuario}?`,
       [
         { text: "Cancelar", style: "cancel" },
-        { text: "Eliminar", style: "destructive", onPress: () => eliminarUsuario(usuario.documentoUsuario) }
+        {
+          text: "Eliminar",
+          style: "destructive",
+          onPress: () => eliminarUsuario(usuario.documentoUsuario),
+        },
       ]
     );
   };
+
+  // Filtro para la busqueda de usuarios
+  const filteredUsuarios = usuarios.filter((u) =>
+    `${u.nombreUsuario} ${u.apellidoUsuario}`
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
+  if (!loaded) {
+      return (
+        <View style={styles.center}>
+          <ActivityIndicator size="large" />
+          <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+        </View>
+      );
+    }
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -104,7 +144,7 @@ export default function GestionUsuarios({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      {/* Header verde con flecha izquierda y icono derecha */}
+      {/* Header verde */}
       <View style={styles.headerBox}>
         <TouchableOpacity onPress={() => navigation.navigate("AdminHome")}>
           <Ionicons name="arrow-back-outline" size={30} color="#fff" />
@@ -115,12 +155,28 @@ export default function GestionUsuarios({ navigation, route }) {
         <Ionicons name="cart-outline" size={30} color="#fff" />
       </View>
 
+      {/* Barra para buscador */}
+      <View style={styles.searchRow}>
+        <Ionicons name="search" size={22} color="#004AAD" style={{ marginRight: 8 }} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Buscar usuario por nombre"
+          value={search}
+          onChangeText={setSearch}
+        />
+        {search.length > 0 && (
+          <TouchableOpacity onPress={() => setSearch("")}>
+            <Ionicons name="close-circle" size={22} color="#dc3545" />
+          </TouchableOpacity>
+        )}
+      </View>
+
       <View style={styles.rowColumn}>
-        <Text style={styles.count}>Total usuarios: {usuarios.length}</Text>
+        <Text style={styles.count}>Total usuarios: {filteredUsuarios.length}</Text>
       </View>
 
       <FlatList
-        data={usuarios}
+        data={filteredUsuarios}
         keyExtractor={(item) => item.documentoUsuario}
         renderItem={renderItem}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
@@ -168,9 +224,24 @@ const styles = StyleSheet.create({
   headerText: {
     color: "#132692ff",
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     textAlign: "center",
     flex: 1,
+  },
+  searchRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderColor: "#72cb10",
+    borderWidth: 1.5,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginBottom: 15,
+  },
+  searchInput: {
+    flex: 1,
+    height: 40,
+    fontSize: 16,
   },
   rowColumn: {
     alignItems: "center",

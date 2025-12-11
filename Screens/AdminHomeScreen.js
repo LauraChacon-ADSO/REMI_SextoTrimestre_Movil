@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Menu, Divider } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFonts } from "expo-font";
 
 export default function AdminHomeScreen({ navigation }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const [menuVisible, setMenuVisible] = useState(false);
 
   const openMenu = () => setMenuVisible(true);
@@ -24,12 +34,21 @@ export default function AdminHomeScreen({ navigation }) {
     { title: "Usuarios", icon: "people-outline", route: "GestionUsuarios" },
   ];
 
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       {/* Header fijo */}
       <View style={styles.header}>
         <Ionicons name="cart-outline" size={30} color="#fff" />
-        <Text style={styles.headerText}>Sistema REMI</Text>
+        <Text style={styles.titulo}>Sistema <Text style={styles.headerText}>REMI</Text></Text>
 
         <Menu
           visible={menuVisible}
@@ -84,10 +103,17 @@ const styles = StyleSheet.create({
   headerText: {
     color: "#132692ff",
     fontSize: 25,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     textAlign: "center",
     flex: 1,
   },
+
+  titulo: {
+    color: "#132692ff",
+    fontSize: 25,
+    fontFamily: "Geom",
+  },
+  
   card: {
     width: 250,
     height: 120,

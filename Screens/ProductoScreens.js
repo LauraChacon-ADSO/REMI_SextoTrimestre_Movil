@@ -12,15 +12,25 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import { useFonts } from "expo-font";
 
 export default function ProductoScreens({ navigation }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
- const API_URL = "http://10.0.2.2:5073/api/productoes";
+ const API_URL = "http://localhost:5059/api/productos";
 
   const fetchProductos = async () => {
     try {
@@ -60,7 +70,14 @@ export default function ProductoScreens({ navigation }) {
     );
   });
 
-
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
+  }
   
   if (loading) {
     return (
@@ -206,7 +223,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "#132692ff",
     fontSize: 30,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     textAlign: "center",
     flex: 1,
   },

@@ -13,8 +13,18 @@ import {
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
 export default function ClientesScreens({ navigation }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const [Clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -63,9 +73,27 @@ export default function ClientesScreens({ navigation }) {
     }
     };
 
+    const handleBack = () => {
+      if (usuario?.rol === "admin") {
+        navigation.replace("AdminHome");
+      } else {
+        navigation.replace("VendedorHome");
+      }
+    };
+
+
   const filtered = Clientes.filter((item) =>
     item.nombreCliente?.toLowerCase().includes(search.toLowerCase())
   );
+
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
+  }
 
   if (loading) {
     return (
@@ -81,19 +109,17 @@ export default function ClientesScreens({ navigation }) {
       
      
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-            <Ionicons name="arrow-back" size={28} color="#fff" />
-        </TouchableOpacity>
+        <Ionicons name="cash-outline" size={28} color="#fff" />
 
         <Text style={styles.headerTitle}>Clientes</Text>
 
-        <Ionicons name="people-outline" size={28} color="#fff" />
+        <Ionicons name="cash-outline" size={28} color="#fff" />
       </View>
 
      
       <View style={styles.searchRow}>
         <View style={styles.searchBox}>
-          <Ionicons name="search" size={20} color="#2d7211" style={{ marginRight: 6 }} />
+          <Ionicons name="search" size={20} color="#72CB10" style={{ marginRight: 6 }} />
           <TextInput
             style={styles.searchInput}
             placeholder="Buscar cliente por nombre"
@@ -174,7 +200,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "#132692",
     fontSize: 28,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     flex: 1,
     textAlign: "center",
   },

@@ -2,8 +2,18 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import api from "../utils/api";
+import { useFonts } from "expo-font";
 
 export default function RegistrarUsuario({ navigation }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [documento, setDocumento] = useState("");
@@ -45,6 +55,15 @@ export default function RegistrarUsuario({ navigation }) {
       Alert.alert("Error", error.response?.data?.message || "No se pudo registrar el usuario");
     }
   };
+
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -141,7 +160,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: "#132692ff",
     fontSize: 22,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     textAlign: "center",
     flex: 1,
   },

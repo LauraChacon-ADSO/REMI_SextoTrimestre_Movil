@@ -12,8 +12,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useFonts } from "expo-font";
 
 export default function FacturaScreen({ navigation }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const [facturas, setFacturas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -60,6 +70,15 @@ export default function FacturaScreen({ navigation }) {
       <View style={styles.center}>
         <ActivityIndicator size="large" color="#4ead00ff" />
         <Text style={{ marginTop: 10 }}>Cargando facturas...</Text>
+      </View>
+    );
+  }
+
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
       </View>
     );
   }
@@ -158,7 +177,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
-  name: { fontSize: 22, fontWeight: "800", color: "#132692ff", width: "100%" },
+  name: { fontSize: 22, fontFamily: "GeomBold", color: "#132692ff", width: "100%" },
 
   header: {
     backgroundColor: "#72CB10",
@@ -174,7 +193,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: "#132692ff",
     fontSize: 30,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     flex: 1,
     textAlign: "center",
   },
@@ -207,7 +226,7 @@ const styles = StyleSheet.create({
 
   searchButtonText: {
     color: "#132692ff",
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     fontSize: 16,
   },
 });

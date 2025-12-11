@@ -10,8 +10,18 @@ import {
 } from "react-native";
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
 
 export default function ProveedorFormScreens({ navigation, route }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const proveedorEditar = route.params?.proveedor ?? null;
 
   const [documentoProveedor, setDocumento] = useState("");
@@ -64,6 +74,15 @@ export default function ProveedorFormScreens({ navigation, route }) {
       console.log(error);
     }
   };
+
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -149,7 +168,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     fontSize: 28,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     color: "#132692",
   },
 

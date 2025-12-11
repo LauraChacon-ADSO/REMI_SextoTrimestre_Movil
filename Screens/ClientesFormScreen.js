@@ -10,8 +10,18 @@ import {
 } from "react-native";
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
 
 export default function ClientesFormScreens({ navigation, route }) {
+  const [loaded] = useFonts({
+    Merriweather: require("../assets/fonts/Merriweather_24pt-Regular.ttf"),
+    MerriweatherBold: require("../assets/fonts/Merriweather_24pt-Bold.ttf"),
+    Geom: require("../assets/fonts/Geom-Regular.ttf"),
+    GeomBold: require("../assets/fonts/Geom-Bold.ttf"),
+    Montserrat: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MontserratBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+  });
+
   const clienteEditar = route.params?.cliente ?? null;
 
   const [documentoCliente, setDocumento] = useState("");
@@ -69,6 +79,15 @@ export default function ClientesFormScreens({ navigation, route }) {
       Alert.alert("Error", "No se pudo guardar el cliente");
       console.log(error.response?.data);;
     }
+  };
+
+  if (!loaded) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" />
+        <Text style={{ fontSize: 16 }}>Cargando fuente...</Text>
+      </View>
+    );
   };
 
   return (
@@ -174,7 +193,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     fontSize: 28,
-    fontWeight: "bold",
+    fontFamily: "GeomBold",
     color: "#132692",
   },
 
